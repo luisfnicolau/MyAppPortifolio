@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="udacityOrange">#F08C35</color>
+    <color name="blue50">#E3F2FD</color>
+    <color name="teal500">#009688</color>
+    <color name="teal100">#B2DFDB</color>
+</resources>

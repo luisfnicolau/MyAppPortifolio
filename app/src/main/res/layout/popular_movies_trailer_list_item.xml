@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/popular_movies_videos_image_view"
+        android:layout_width="0dp"
+        android:padding="16dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/popular_movies_videos_text_view"
+        android:layout_width="0dp"
+        android:paddingLeft="8dp"
+        android:layout_height="match_parent"
+        android:textColor="@android:color/black"
+        android:gravity="center_vertical"
+        android:layout_weight="3"/>
+
+</LinearLayout>

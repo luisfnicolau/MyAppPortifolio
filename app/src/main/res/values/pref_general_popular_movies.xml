@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="pref_unit_label_popular_movies">Sort Movies By</string>
+    <string name="pref_unit_high_rate_popular_movies">highRate</string>
+    <string name="pref_unit_mostpopular_popular_movies">mostPopular</string>
+    <string name="pref_unit_key_popular_movies">Preference Key</string>
+    <string-array name="pref_unit_values_popular_movies">
+        <item>Rate</item>
+        <item>Popular</item>
+        <item>Fav</item>
+    </string-array>
+    <string-array name="pref_unit_options_popular_movies">
+        <item>Highest Rated</item>
+        <item>Most Popular</item>
+        <item>Favorite</item>
+    </string-array>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="@string/pref_unit_key_popular_movies"
+        android:title="@string/pref_unit_label_popular_movies"
+        android:defaultValue="@string/pref_unit_mostpopular_popular_movies"
+        android:entries="@array/pref_unit_options_popular_movies"
+        android:entryValues="@array/pref_unit_values_popular_movies"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"></ListPreference>
+
+</PreferenceScreen>
