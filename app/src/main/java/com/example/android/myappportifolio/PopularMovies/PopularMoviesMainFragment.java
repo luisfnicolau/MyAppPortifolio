@@ -347,8 +347,8 @@ private class downloadMovieData extends AsyncTask<Void, Void, Boolean> {
         } else {
             //Just testing the Database, uncomment below to intiate (it will take me to the error that I get stuck)
 
-//                PopularMoviesUtility.putSomethingInDb(context, movieInfo[0], preference);
-//            PopularMoviesUtility.ReadeSomethingFromDb(context, preference);
+                PopularMoviesUtility.putSomethingInDb(context, movieInfo[0], preference);
+            PopularMoviesUtility.ReadSomethingFromDb(context, preference);
         }
 
         if (movies != null && hasNewInfo) {

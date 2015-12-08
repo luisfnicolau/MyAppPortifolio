@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ShareActionProvider;
 
 import com.example.android.myappportifolio.R;
 
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 public class PopularMoviesDetailActivity extends Activity {
 
     static ArrayList<String> reviews;
+    private static ShareActionProvider mShareActionProvider;
+    private static Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,11 @@ public class PopularMoviesDetailActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_popular_movies_detail, menu);
+
+        MenuItem item = menu.findItem(R.id.detail_item_share);
+
+        mShareActionProvider = (ShareActionProvider) item.getActionProvider();
+
         return true;
     }
 
@@ -47,7 +55,10 @@ public class PopularMoviesDetailActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.detail_item_share) {
+            if (intent != null) {
+                startActivity(intent);
+            }
             return true;
         }
 
@@ -64,5 +75,12 @@ public class PopularMoviesDetailActivity extends Activity {
         Intent intent = new Intent(getApplicationContext(), PopularMoviesReviewsListPage.class);
         intent.putExtra("reviewsList", reviews);
         startActivity(intent);
+    }
+
+    public static void setShareIntent(Intent shareIntent) {
+        if (mShareActionProvider != null) {
+            mShareActionProvider.setShareIntent(shareIntent);
+        }
+        intent = shareIntent;
     }
 }

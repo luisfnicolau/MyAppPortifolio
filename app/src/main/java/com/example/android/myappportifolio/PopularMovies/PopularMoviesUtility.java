@@ -1,16 +1,17 @@
 package com.example.android.myappportifolio.PopularMovies;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 
 import com.example.android.myappportifolio.PopularMovies.PopularMoviesData.PopularMoviesContract;
 import com.example.android.myappportifolio.PopularMovies.PopularMoviesData.PopularMoviesDbHelper;
-import com.example.android.myappportifolio.PopularMovies.PopularMoviesData.PopularMoviesProvider;
 import com.example.android.myappportifolio.R;
 import com.squareup.picasso.Picasso;
 
@@ -408,7 +409,7 @@ public class PopularMoviesUtility {
     //Triyng to write info on database using Content Provider
     public static void putSomethingInDb(Context context, String[] moviesInfo, String databaseName) {
         context.deleteDatabase(PopularMoviesDbHelper.DATABASE_NAME);
-        PopularMoviesProvider provider = new PopularMoviesProvider();
+        ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
         values.put(PopularMoviesContract.PopularEntry.COLUMN_TITLE, moviesInfo[0]);
             values.put(PopularMoviesContract.PopularEntry.COLUMN_POSTER, moviesInfo[1]);
@@ -417,7 +418,7 @@ public class PopularMoviesUtility {
             values.put(PopularMoviesContract.PopularEntry.COLUMN_RELEASE_DATE, moviesInfo[4]);
             values.put(PopularMoviesContract.PopularEntry.COLUMN_ID, moviesInfo[5]);
         System.out.println(PopularMoviesContract.PopularEntry.CONTENT_URI);
-        provider.insert(PopularMoviesContract.PopularEntry.CONTENT_URI, values);
+        resolver.insert(PopularMoviesContract.PopularEntry.CONTENT_URI, values);
 
 //        SQLiteDatabase db = new PopularMoviesDbHelper(context)
 //                .getWritableDatabase();
@@ -470,7 +471,13 @@ public class PopularMoviesUtility {
     }
 
     //Just made a simple read from a db (yet to be implemented)
-    public static void ReadeSomethingFromDb(Context context, String preference) {
+    public static void ReadSomethingFromDb(Context context, String preference) {
+        ContentResolver resolver = context.getContentResolver();
+        Cursor cursor = resolver.query(PopularMoviesContract.PopularEntry.CONTENT_URI,
+                null,
+                null,
+                null,
+                null);
 //        SQLiteDatabase db = new PopularMoviesDbHelper(context)
 //                .getReadableDatabase();
 //        String table = null;
@@ -482,7 +489,7 @@ public class PopularMoviesUtility {
 //        } else if (preference.equals("Fav")) {
 //            table = PopularMoviesContract.FavoriteEntry.TABLE_NAME;
 //        }
-//        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
 //
 //        Cursor cursor = db.query(table,
 //                null,
@@ -491,19 +498,26 @@ public class PopularMoviesUtility {
 //                null,
 //                null,
 //                null);
-//        if (cursor.moveToFirst()) {
-//            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_TITLE));
-//            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_POSTER));
-//            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_OVERVIEW));
-//            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_VOTE_AVERAGE));
-//            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_RELEASE_DATE));
-//            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_ID));
-//        }
-//        if (cursor.moveToFirst()) {
-//            do {
-//                System.out.println(cursor.getString(list.get(0)));
-//            } while (cursor.moveToNext());
-//        }
+        if (cursor.moveToFirst()) {
+            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_TITLE));
+            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_POSTER));
+            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_OVERVIEW));
+            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_VOTE_AVERAGE));
+            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_RELEASE_DATE));
+            list.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_ID));
+        }
+        if (cursor.moveToFirst()) {
+            do {
+                System.out.println(cursor.getString(list.get(0)));
+                System.out.println(cursor.getString(list.get(1)));
+                System.out.println(cursor.getString(list.get(2)));
+                System.out.println(cursor.getString(list.get(3)));
+                System.out.println(cursor.getString(list.get(4)));
+                System.out.println(cursor.getString(list.get(5)));
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
 //        context.deleteDatabase(PopularMoviesDbHelper.DATABASE_NAME);
     }
 }

@@ -2,6 +2,7 @@
     <string name="app_name">My App Portifolio</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_share">Share</string>
     <string name="most_popular">Most Popular</string>
     <string name="high_rate">Highest Rated</string>
     <string name="favorites">Favorites</string>

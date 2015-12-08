@@ -29,8 +29,8 @@
         <!-- I choose to set Detail Activity withou a action bar. It looks more cleaner to me -->
         <activity
             android:name=".PopularMovies.PopularMoviesDetailActivity"
-            android:label="@string/title_activity_popular_movies_detail"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+            android:label="@string/title_activity_popular_movies_main"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"></activity>
         <activity
             android:name=".PopularMovies.PopularMoviesSettingsActivity"
             android:label="@string/action_settings"></activity>
