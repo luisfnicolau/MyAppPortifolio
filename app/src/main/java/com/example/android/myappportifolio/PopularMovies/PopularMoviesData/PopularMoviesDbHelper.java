@@ -40,8 +40,7 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
                 PopularMoviesContract.RateEntry.COLUMN_VOTE_AVERAGE + " TEXT, " +
                 PopularMoviesContract.RateEntry.COLUMN_RELEASE_DATE + " TEXT," +
                 PopularMoviesContract.RateEntry.COLUMN_ID + " TEXT," +
-                PopularMoviesContract.PopularEntry.COLUMN_POSTER + " TEXT" +
-
+                PopularMoviesContract.RateEntry.COLUMN_POSTER + " TEXT" +
                 " );";
 
         final String SQL_CREATE_FAVORITE_TABLE = "CREATE TABLE " + PopularMoviesContract.FavoriteEntry.TABLE_NAME  + " (" +
@@ -52,7 +51,7 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
                 PopularMoviesContract.FavoriteEntry.COLUMN_VOTE_AVERAGE + " TEXT, " +
                 PopularMoviesContract.FavoriteEntry.COLUMN_RELEASE_DATE + " TEXT," +
                 PopularMoviesContract.FavoriteEntry.COLUMN_ID + " TEXT," +
-                PopularMoviesContract.PopularEntry.COLUMN_POSTER + " TEXT" +
+                PopularMoviesContract.FavoriteEntry.COLUMN_POSTER + " TEXT" +
                 " );";
 
 

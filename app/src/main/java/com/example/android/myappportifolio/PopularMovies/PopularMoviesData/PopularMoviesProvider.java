@@ -175,7 +175,7 @@ public class PopularMoviesProvider extends ContentProvider {
                 break;
             }
             case FAV:{
-                rowsUpdated = db.update(PopularMoviesContract.RateEntry.TABLE_NAME, values, selection, selectionArgs);
+                rowsUpdated = db.update(PopularMoviesContract.FavoriteEntry.TABLE_NAME, values, selection, selectionArgs);
                 break;
             }
             default:

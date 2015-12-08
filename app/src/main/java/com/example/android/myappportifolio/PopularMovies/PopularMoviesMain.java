@@ -36,13 +36,6 @@ public class PopularMoviesMain extends Activity {
         String defaultValue = getResources().getString(R.string.pref_movies_default);
         String preference = sharedPref.getString(getString(R.string.pref_movies_key), defaultValue);
 
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent settingsIntent = new Intent(getApplicationContext(), PopularMoviesSettingsActivity.class);
-            startActivity(settingsIntent);
-            return true;
-        }
         if (id == R.id.action_most_popular) {
 //            pref.setSummary("Popular");
             SharedPreferences.Editor editor = sharedPref.edit();

@@ -118,12 +118,8 @@ public class PopularMoviesMainFragment extends Fragment {
         } else if (preference.equals("Fav")) {         //If user chosse Favorited Movies go in here
 
             movies = PopularMoviesUtility.loadFavoriteInfo(context);
-            String[] moviesID = new String[movies.length];
-            //Get the id from the movies so I can get the saved posters
-            for (int i = 0; i < movies.length; i++) {
-                moviesID[i] = movies[i][5];
-            }
-            images = PopularMoviesUtility.loadFavoriteImage(context, moviesID);
+            images = PopularMoviesUtility.loadFavoriteImage(context);
+            System.out.println("tamanho do fav: " + images.length);
             PopularMoviesImageAdapter imageAdapter = new PopularMoviesImageAdapter(context, movies, images, false);
             popularMoviesGrid.setAdapter(imageAdapter);
         }
@@ -308,7 +304,7 @@ private class downloadMovieData extends AsyncTask<Void, Void, Boolean> {
         if (hasNewInfo) {
             //Check here what the diferences between the new info fetched and the info saved and update only the diferences without needing to download more images than the necessary
             if (images != null && movieInfo != null) {
-                boolean checker;
+                boolean checker = false;
                 for (int i = 0; i < movies.length; i++) {
                     checker = false;
                     for (int j = i; j < movieInfo.length; j++) {
@@ -334,7 +330,7 @@ private class downloadMovieData extends AsyncTask<Void, Void, Boolean> {
                             checker = true;
                         }
                     }
-                    if (checker = false) {
+                    if (checker == false) {
                         oldInfo.add(movieInfo[i][5]);
                     }
                 }
@@ -342,13 +338,8 @@ private class downloadMovieData extends AsyncTask<Void, Void, Boolean> {
             PopularMoviesImageAdapter imageAdapter = new PopularMoviesImageAdapter(context, movies, images, hasNet);
             popularMoviesGrid.setAdapter(imageAdapter);
             PopularMoviesUtility.DownloadImage(movies, context, preference);
-            PopularMoviesUtility.DeleteOldInfo(context, oldInfo);
+            PopularMoviesUtility.DeleteOldInfo(context, oldInfo, preference);
             needReloadImages = true;
-        } else {
-            //Just testing the Database, uncomment below to intiate (it will take me to the error that I get stuck)
-
-//                PopularMoviesUtility.putSomethingInDb(context, movieInfo[0], preference);
-//            PopularMoviesUtility.ReadSomethingFromDb(context, preference);
         }
 
         if (movies != null && hasNewInfo) {
