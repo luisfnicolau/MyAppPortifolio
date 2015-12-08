@@ -4,7 +4,6 @@ import android.accounts.Account;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -47,6 +46,10 @@ public class PopularMoviesMainFragment extends Fragment {
     boolean needReloadImages = false;
 
 
+    public interface Callback {
+
+        public void onItemSelected(ArrayList<String> moviesInfo, String preference, byte[] byteArray);
+    }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
@@ -131,33 +134,24 @@ public class PopularMoviesMainFragment extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     if (movies[position][5] != null) {
                         ArrayList<String> movieDetail = new ArrayList<String>();
+                        byte[] byteArray = null;
                         //the Array "images" is not reloaded after new images was fetch from internet and saved on the device, so I load here, with a boolean to check if is necessary
                         if (needReloadImages) {
                             images = PopularMoviesUtility.loadImages(context, preference);
+                            needReloadImages = false;
                         }
                         for (int i = 0; i < movies[position].length; i++) {
                             movieDetail.add(movies[position][i]);
-                        }
-                        Intent intent = new Intent(context, PopularMoviesDetailActivity.class);
-                        intent.putExtra("moviesList", movieDetail);
-                        //Chek if I am at favorite list to make some changes in detail
-                        if (preference.equals("Fav")) {
-                            intent.putExtra("FavoriteList", true);
-                        } else {
-                            intent.putExtra("FavoriteList", false);
                         }
 
                         //Convert to byte array
                         if (images[position] != null) {
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             images[position].compress(Bitmap.CompressFormat.PNG, 100, stream);
-                            byte[] byteArray = stream.toByteArray();
-                            intent.putExtra("moviePoster", byteArray);
+                            byteArray = stream.toByteArray();
                         }
-
-                        //Check if is tablet (yet to be implemented)
-                        boolean isTablet = getResources().getBoolean(R.bool.isTablet);
-                            startActivity(intent);
+                        ((Callback) getActivity())
+                                .onItemSelected(movieDetail, preference, byteArray);
                     }
                 }
             });

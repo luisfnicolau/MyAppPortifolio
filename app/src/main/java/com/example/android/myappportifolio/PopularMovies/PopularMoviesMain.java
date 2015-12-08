@@ -9,12 +9,26 @@ import android.view.MenuItem;
 
 import com.example.android.myappportifolio.R;
 
-public class PopularMoviesMain extends Activity {
+import java.util.ArrayList;
+
+public class PopularMoviesMain extends Activity implements PopularMoviesMainFragment.Callback {
+
+    public static boolean mTwoPane;
+    private final String DETAILFRAGMENT_TAG = "DFTAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popular_movies_main);
+        if (findViewById(R.id.movie_detail_container) != null) {
+            mTwoPane = true;
+
+            if (savedInstanceState == null) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.movie_detail_container, new PopularMoviesDetailActivityFragment())
+                        .commit();
+            }
+        }
     }
 
 
@@ -64,5 +78,26 @@ public class PopularMoviesMain extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onItemSelected(ArrayList<String> moviesInfo, String preference, byte[] byteArray) {
+        if (mTwoPane) {
+            Bundle args = new Bundle();
+            args.putStringArrayList(PopularMoviesDetailActivityFragment.MOVIES_LIST_NAME, moviesInfo);
+            args.putString(PopularMoviesDetailActivityFragment.PREFERENCE_NAME, preference);
+            args.putByteArray(PopularMoviesDetailActivityFragment.BYTE_ARRAY_NAME, byteArray);
 
+            PopularMoviesDetailActivityFragment fragment = new PopularMoviesDetailActivityFragment();
+            fragment.setArguments(args);
+
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.movie_detail_container, fragment,DETAILFRAGMENT_TAG)
+                    .commit();
+        } else {
+            Intent intent = new Intent(this, PopularMoviesDetailActivity.class);
+            intent.putStringArrayListExtra(PopularMoviesDetailActivityFragment.MOVIES_LIST_NAME, moviesInfo);
+            intent.putExtra(PopularMoviesDetailActivityFragment.PREFERENCE_NAME, preference);
+            intent.putExtra(PopularMoviesDetailActivityFragment.BYTE_ARRAY_NAME, byteArray);
+            startActivity(intent);
+        }
+    }
 }

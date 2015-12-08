@@ -1,7 +1,6 @@
 package com.example.android.myappportifolio.PopularMovies;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,12 +22,18 @@ public class PopularMoviesDetailActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popular_movies_detail);
-        boolean isTablet = getResources().getBoolean(R.bool.isTablet);
-        if (isTablet) {
-            PopularMoviesDetailActivityFragment fragment = new PopularMoviesDetailActivityFragment();
 
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
+        //Only create another fragment to past information if in Two Pane mode because I using Scroll View on Detail Fragment and two children will cause a error
+        if (savedInstanceState == null && PopularMoviesMain.mTwoPane) {
+            Bundle arguments = new Bundle();
+            arguments.putStringArrayList(PopularMoviesDetailActivityFragment.MOVIES_LIST_NAME, getIntent().getStringArrayListExtra(PopularMoviesDetailActivityFragment.MOVIES_LIST_NAME));
+            arguments.putString("preference", getIntent().getStringExtra("preference"));
+            arguments.putByteArray("byteArray", getIntent().getByteArrayExtra("byteArray"));
+
+            PopularMoviesDetailActivityFragment fragment = new PopularMoviesDetailActivityFragment();
+            fragment.setArguments(arguments);
+
+            getFragmentManager().beginTransaction()
                     .add(R.id.movie_detail_container, fragment)
                     .commit();
         }

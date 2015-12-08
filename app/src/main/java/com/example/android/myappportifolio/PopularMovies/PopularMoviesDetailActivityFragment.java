@@ -51,11 +51,16 @@ public class PopularMoviesDetailActivityFragment extends Fragment {
     Button reviewButton;
     Button reviewButtonName;
     Button moreReviews;
+    ArrayList<String> movieDetail = null;
     // Array that store the information about the videos and reviews
     ArrayList<String> videosKey;
     ArrayList<String> reviews;
     String id;
     Boolean isFavoriteList;
+
+    public static String MOVIES_LIST_NAME = "movieList";
+    public static String PREFERENCE_NAME = "preference";
+    public static String BYTE_ARRAY_NAME = "byteArray";
 
     public PopularMoviesDetailActivityFragment() {
     }
@@ -70,17 +75,27 @@ public class PopularMoviesDetailActivityFragment extends Fragment {
 
         ImageView poster = (ImageView) rootView.findViewById(R.id.popular_movies_detail_poster);
 
-        boolean isTablet = getResources().getBoolean(R.bool.isTablet);
-//        if (isTablet) {
-//            LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.popular_movies_detail_image_layout);
-//            linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, PopularMoviesUtility.convertDipToPixels(550, context)));
-//        }
-
         //Get the movie information from previous activity
-        isFavoriteList = getActivity().getIntent().getBooleanExtra("FavoriteList", false);
-        final ArrayList<String> movieDetail = getActivity().getIntent().getStringArrayListExtra("moviesList");
+        String preference = "";
+        byte[] byteArray = null;
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            movieDetail = arguments.getStringArrayList(MOVIES_LIST_NAME);
+            preference = arguments.getString(PREFERENCE_NAME);
+            byteArray = arguments.getByteArray(BYTE_ARRAY_NAME);
+        } else {
+            movieDetail = getActivity().getIntent().getStringArrayListExtra(MOVIES_LIST_NAME);
+            preference = getActivity().getIntent().getStringExtra(PREFERENCE_NAME);
+            byteArray = getActivity().getIntent().getByteArrayExtra(BYTE_ARRAY_NAME);
+        }
+        if (preference != null && preference.equals("Fav")) {
+            isFavoriteList = true;
+        } else {
+            isFavoriteList = false;
+        }
+
+        final ArrayList<String> movieDetailToFavorite = movieDetail;
         if (movieDetail != null) {
-            final byte[] byteArray = getActivity().getIntent().getByteArrayExtra("moviePoster");
             Bitmap image = new BitmapDrawable(String.valueOf(R.drawable.ic_image_black_24dp)).getBitmap();
             if (byteArray != null) {
                 image = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
