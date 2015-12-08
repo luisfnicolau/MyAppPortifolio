@@ -46,32 +46,62 @@
       <file leaf-file-name="PopularMoviesMainFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesMainFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="349" column="42" selection-start-line="349" selection-start-column="42" selection-end-line="349" selection-end-column="42" />
+            <state vertical-scroll-proportion="128.89655">
+              <caret line="138" column="47" selection-start-line="138" selection-start-column="47" selection-end-line="138" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PopularMoviesDetailActivityFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PopularMoviesDetailActivityFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesDetailActivityFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="486" column="52" selection-start-line="486" selection-start-column="52" selection-end-line="486" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.42086956">
+              <caret line="352" column="61" selection-start-line="352" selection-start-column="61" selection-end-line="352" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PopularMoviesUtility.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PopularMoviesUtility.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesUtility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.21794872">
-              <caret line="50" column="10" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="10" />
+            <state vertical-scroll-proportion="-10.379311">
+              <caret line="589" column="24" selection-start-line="589" selection-start-column="24" selection-end-line="589" selection-end-column="24" />
               <folding>
-                <element signature="e#14679#14741#0" expanded="true" />
-                <element signature="e#14779#14822#0" expanded="true" />
+                <element signature="e#23848#23910#0" expanded="true" />
+                <element signature="e#23948#23991#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PopularMoviesContract.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesData/PopularMoviesContract.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="77" column="68" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PopularMoviesProvider.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesData/PopularMoviesProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="100" column="36" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PopularMoviesDbHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesData/PopularMoviesDbHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="70" selection-start-line="49" selection-start-column="70" selection-end-line="49" selection-end-column="70" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,41 +141,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5185184">
-              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PopularMoviesImageAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesImageAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="85" column="103" selection-start-line="85" selection-start-column="103" selection-end-line="85" selection-end-column="103" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="69" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
+            <state vertical-scroll-proportion="-11.206897">
+              <caret line="83" column="23" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -1472,14 +1472,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesSync/PopularMoviesSyncService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/popular_movies_syncadapter.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesSync/PopularMoviesSyncAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesMainFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesImageAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_popular_movies_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesDetailActivityFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesData/PopularMoviesDbHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesMainFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesData/PopularMoviesContract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesImageAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesUtility.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesDetailActivityFragment.java" />
       </list>
     </option>
   </component>
@@ -1754,44 +1756,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PopularMoviesSync" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyAppPortifolio" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyAppPortifolio" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myappportifolio" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PopularMovies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="PopularMoviesData" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1899,7 +1863,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="0515363339303937" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="0431544461" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Sunshine" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
@@ -2078,7 +2042,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2089,10 +2053,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2151,8 +2115,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="408" column="23" selection-start-line="408" selection-start-column="23" selection-end-line="408" selection-end-column="23" />
           <folding>
-            <element signature="e#14679#14741#0" expanded="true" />
-            <element signature="e#14779#14822#0" expanded="true" />
+            <element signature="e#23848#23910#0" expanded="true" />
+            <element signature="e#23948#23991#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2466,14 +2430,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesData/PopularMoviesProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="36" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2516,22 +2472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesImageAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="85" column="103" selection-start-line="85" selection-start-column="103" selection-end-line="85" selection-end-column="103" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesDetailActivityFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="486" column="52" selection-start-line="486" selection-start-column="52" selection-end-line="486" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2543,22 +2483,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesMainFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesImageAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.206897">
+          <caret line="83" column="23" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesData/PopularMoviesContract.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="349" column="42" selection-start-line="349" selection-start-column="42" selection-end-line="349" selection-end-column="42" />
+          <caret line="77" column="68" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesData/PopularMoviesProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="36" selection-start-line="100" selection-start-column="30" selection-end-line="100" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesData/PopularMoviesDbHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="70" selection-start-line="49" selection-start-column="70" selection-end-line="49" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesMainFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="128.89655">
+          <caret line="138" column="47" selection-start-line="138" selection-start-column="47" selection-end-line="138" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesUtility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21794872">
-          <caret line="50" column="10" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="10" />
+        <state vertical-scroll-proportion="-10.379311">
+          <caret line="589" column="24" selection-start-line="589" selection-start-column="24" selection-end-line="589" selection-end-column="24" />
           <folding>
-            <element signature="e#14679#14741#0" expanded="true" />
-            <element signature="e#14779#14822#0" expanded="true" />
+            <element signature="e#23848#23910#0" expanded="true" />
+            <element signature="e#23948#23991#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/myappportifolio/PopularMovies/PopularMoviesDetailActivityFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42086956">
+          <caret line="352" column="61" selection-start-line="352" selection-start-column="61" selection-end-line="352" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -347,10 +347,10 @@ public class PopularMoviesDetailActivityFragment extends Fragment {
                 if (videos != null) {
                     VideosListAdapter videosNameAdapter = new VideosListAdapter(context, videos);
                     videosList.setAdapter(videosNameAdapter);
-                    setVideoUrlToShare(videosKey.get(0));
                     //Set the size to make the ListView have the size of its children added. Made that because I already using a ScroolView as a parent of my view.
                     if (videos.size() != 0) {
                         videosList.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, videosNameAdapter.getCount() * PopularMoviesUtility.convertDipToPixels(75, context)));
+                        setVideoUrlToShare(videosKey.get(0));
                     }
                     else {
                         videosList.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));

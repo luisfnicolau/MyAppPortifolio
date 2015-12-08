@@ -81,9 +81,6 @@ public class PopularMoviesImageAdapter extends BaseAdapter {
 
             imageView.setImageBitmap(images[position]);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            boolean isTablet = context.getResources().getBoolean(R.bool.isTablet);
-            System.out.println("E tablet: " + isTablet);
-            System.out.println("Orientacao: " + context.getResources().getConfiguration().orientation);
             imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(300, context)));
             return imageView;
         }

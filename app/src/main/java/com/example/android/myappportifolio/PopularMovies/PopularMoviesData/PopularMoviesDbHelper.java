@@ -24,31 +24,35 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
         final String SQL_CREATE_POPULAR_TABLE = "CREATE TABLE " + PopularMoviesContract.PopularEntry.TABLE_NAME  + " (" +
                 PopularMoviesContract.PopularEntry._ID + " INTEGER PRIMARY KEY," +
                 PopularMoviesContract.PopularEntry.COLUMN_TITLE + " TEXT," +
-                PopularMoviesContract.PopularEntry.COLUMN_POSTER + " TEXT, " +
+                PopularMoviesContract.PopularEntry.COLUMN_POSTER_PATH + " TEXT, " +
                 PopularMoviesContract.PopularEntry.COLUMN_OVERVIEW + " TEXT, " +
                 PopularMoviesContract.PopularEntry.COLUMN_VOTE_AVERAGE + " TEXT, " +
                 PopularMoviesContract.PopularEntry.COLUMN_RELEASE_DATE + " TEXT," +
-                PopularMoviesContract.PopularEntry.COLUMN_ID + " TEXT" +
+                PopularMoviesContract.PopularEntry.COLUMN_ID + " TEXT," +
+                PopularMoviesContract.PopularEntry.COLUMN_POSTER + " TEXT" +
                 " );";
 
         final String SQL_CREATE_RATE_TABLE = "CREATE TABLE " + PopularMoviesContract.RateEntry.TABLE_NAME  + " (" +
                 PopularMoviesContract.RateEntry._ID + " INTEGER PRIMARY KEY," +
-                PopularMoviesContract.RateEntry.COLUMN_TITLE + " TEXT NOT NULL," +
-                PopularMoviesContract.RateEntry.COLUMN_POSTER + " TEXT NOT NULL, " +
-                PopularMoviesContract.RateEntry.COLUMN_OVERVIEW + " TEXT NOT NULL, " +
-                PopularMoviesContract.RateEntry.COLUMN_VOTE_AVERAGE + " TEXT NOT NULL, " +
-                PopularMoviesContract.RateEntry.COLUMN_RELEASE_DATE + " TEXT NOT NULL," +
-                PopularMoviesContract.RateEntry.COLUMN_ID + " TEXT NOT NULL" +
+                PopularMoviesContract.RateEntry.COLUMN_TITLE + " TEXT," +
+                PopularMoviesContract.RateEntry.COLUMN_POSTER_PATH + " TEXT, " +
+                PopularMoviesContract.RateEntry.COLUMN_OVERVIEW + " TEXT, " +
+                PopularMoviesContract.RateEntry.COLUMN_VOTE_AVERAGE + " TEXT, " +
+                PopularMoviesContract.RateEntry.COLUMN_RELEASE_DATE + " TEXT," +
+                PopularMoviesContract.RateEntry.COLUMN_ID + " TEXT," +
+                PopularMoviesContract.PopularEntry.COLUMN_POSTER + " TEXT" +
+
                 " );";
 
         final String SQL_CREATE_FAVORITE_TABLE = "CREATE TABLE " + PopularMoviesContract.FavoriteEntry.TABLE_NAME  + " (" +
                 PopularMoviesContract.FavoriteEntry._ID + " INTEGER PRIMARY KEY," +
-                PopularMoviesContract.FavoriteEntry.COLUMN_TITLE + " TEXT NOT NULL," +
-                PopularMoviesContract.FavoriteEntry.COLUMN_POSTER + " TEXT NOT NULL, " +
-                PopularMoviesContract.FavoriteEntry.COLUMN_OVERVIEW + " TEXT NOT NULL, " +
-                PopularMoviesContract.FavoriteEntry.COLUMN_VOTE_AVERAGE + " TEXT NOT NULL, " +
-                PopularMoviesContract.FavoriteEntry.COLUMN_RELEASE_DATE + " TEXT NOT NULL," +
-                PopularMoviesContract.FavoriteEntry.COLUMN_ID + " TEXT NOT NULL" +
+                PopularMoviesContract.FavoriteEntry.COLUMN_TITLE + " TEXT," +
+                PopularMoviesContract.FavoriteEntry.COLUMN_POSTER_PATH + " TEXT, " +
+                PopularMoviesContract.FavoriteEntry.COLUMN_OVERVIEW + " TEXT, " +
+                PopularMoviesContract.FavoriteEntry.COLUMN_VOTE_AVERAGE + " TEXT, " +
+                PopularMoviesContract.FavoriteEntry.COLUMN_RELEASE_DATE + " TEXT," +
+                PopularMoviesContract.FavoriteEntry.COLUMN_ID + " TEXT," +
+                PopularMoviesContract.PopularEntry.COLUMN_POSTER + " TEXT" +
                 " );";
 
 
