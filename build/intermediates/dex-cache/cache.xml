@@ -6,14 +6,14 @@
         jumboMode="false"
         revision="22.0.1"
         sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-e997b7a473e093854c0668b9dbd779b99594c509.jar" />
+        <dex dex="C:\Users\Luis\Desktop\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-e997b7a473e093854c0668b9dbd779b99594c509.jar" />
     </item>
     <item
         jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-4875cb6104f132350b2feb13d50c914bc0fddeae.jar" />
+        <dex dex="C:\Users\Luis\Desktop\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-4875cb6104f132350b2feb13d50c914bc0fddeae.jar" />
     </item>
 
 </items>
