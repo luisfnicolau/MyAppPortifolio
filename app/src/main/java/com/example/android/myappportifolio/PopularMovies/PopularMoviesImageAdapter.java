@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.example.android.myappportifolio.R;
@@ -69,15 +68,16 @@ public class PopularMoviesImageAdapter extends BaseAdapter {
                 imageView.setImageBitmap(images[position]);
             }
 
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            boolean isTablet = context.getResources().getBoolean(R.bool.isTablet);
-            if (isTablet && context.getResources().getConfiguration().orientation == context.getResources().getConfiguration().ORIENTATION_PORTRAIT) {
-                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(425, context)));
-            } else if(isTablet && context.getResources().getConfiguration().orientation == context.getResources().getConfiguration().ORIENTATION_LANDSCAPE) {
-                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(250, context)));
-            } else {
-                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(325, context)));
-            }
+//            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setAdjustViewBounds(true);
+//            boolean isTablet = context.getResources().getBoolean(R.bool.isTablet);
+//            if (isTablet && context.getResources().getConfiguration().orientation == context.getResources().getConfiguration().ORIENTATION_PORTRAIT) {
+//                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(425, context)));
+//            } else if(isTablet && context.getResources().getConfiguration().orientation == context.getResources().getConfiguration().ORIENTATION_LANDSCAPE) {
+//                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(250, context)));
+//            } else {
+//                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(325, context)));
+//            }
             return imageView;
         } else {
             if (convertView == null) {
@@ -87,15 +87,16 @@ public class PopularMoviesImageAdapter extends BaseAdapter {
             }
 
             imageView.setImageBitmap(images[position]);
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            boolean isTablet = context.getResources().getBoolean(R.bool.isTablet);
-            if (isTablet && context.getResources().getConfiguration().orientation == context.getResources().getConfiguration().ORIENTATION_PORTRAIT) {
-                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(425, context)));
-            }else if(isTablet && context.getResources().getConfiguration().orientation == context.getResources().getConfiguration().ORIENTATION_LANDSCAPE) {
-                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(250, context)));
-            } else {
-                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(325, context)));
-            }
+            imageView.setAdjustViewBounds(true);
+//            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//            boolean isTablet = context.getResources().getBoolean(R.bool.isTablet);
+//            if (isTablet && context.getResources().getConfiguration().orientation == context.getResources().getConfiguration().ORIENTATION_PORTRAIT) {
+//                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(425, context)));
+//            }else if(isTablet && context.getResources().getConfiguration().orientation == context.getResources().getConfiguration().ORIENTATION_LANDSCAPE) {
+//                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(250, context)));
+//            } else {
+//                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(325, context)));
+//            }
             return imageView;
         }
     }
