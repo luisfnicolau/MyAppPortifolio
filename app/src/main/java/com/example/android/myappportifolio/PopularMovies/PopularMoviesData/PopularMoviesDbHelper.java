@@ -58,16 +58,15 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
                 PopularMoviesContract.TrailersAndReviewsEntry._ID + " INTEGER PRIMARY KEY," +
                 PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_TRAILERS + " TEXT," +
                 PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_LOC_KEY + " TEXT," +
-                PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_REVIEWS + " TEXT, " +
-
-        " FOREIGN KEY (" + PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_LOC_KEY + ") REFERENCES " +
-                PopularMoviesContract.PopularEntry.TABLE_NAME + " (" + PopularMoviesContract.PopularEntry._ID + ");";
+                PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_REVIEWS + " TEXT " +
+                ");";
 
 
 
         sqLiteDatabase.execSQL(SQL_CREATE_POPULAR_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_RATE_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_FAVORITE_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_TRAILERS_TABLE);
     }
 
     @Override
@@ -81,6 +80,7 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PopularMoviesContract.PopularEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PopularMoviesContract.RateEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PopularMoviesContract.FavoriteEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PopularMoviesContract.TrailersAndReviewsEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 }

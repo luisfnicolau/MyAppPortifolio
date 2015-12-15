@@ -18,6 +18,7 @@ public class PopularMoviesProvider extends ContentProvider {
     static final int POPULAR = 100;
     static final int RATE = 200;
     static final int FAV = 300;
+    static final int REV = 400;
 
     private PopularMoviesDbHelper mOpenHelper;
 
@@ -71,6 +72,20 @@ public class PopularMoviesProvider extends ContentProvider {
                 );
                 break;
             }
+
+            case REV:
+            {
+                retCursor = mOpenHelper.getReadableDatabase().query(
+                        PopularMoviesContract.TrailersAndReviewsEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -86,14 +101,7 @@ public class PopularMoviesProvider extends ContentProvider {
     //Problem is here
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        if (mOpenHelper == null) {
-            System.out.println("mOpenHelper is null");
-        } else {
-            System.out.println("mOpenHelper is not null");
-        }
-        //Problem is here.
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        System.out.println("Here");
         final int match = sUriMatcher.match(uri);
         Uri returnUri = null;
         switch (match) {
@@ -117,6 +125,14 @@ public class PopularMoviesProvider extends ContentProvider {
                 long _id = db.insert(PopularMoviesContract.FavoriteEntry.TABLE_NAME, null, values);
                 if (_id > 0)
                     returnUri = PopularMoviesContract.FavoriteEntry.buildPopularUri(_id);
+                else
+                    throw new android.database.SQLException("Failed to insert row into " + uri);
+                break;
+            }
+            case REV: {
+                long _id = db.insert(PopularMoviesContract.TrailersAndReviewsEntry.TABLE_NAME, null, values);
+                if (_id > 0)
+                    returnUri = PopularMoviesContract.TrailersAndReviewsEntry.buildTrailerAdnReviewsUri(_id);
                 else
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 break;
@@ -146,6 +162,10 @@ public class PopularMoviesProvider extends ContentProvider {
             }
             case FAV: {
                 rowsDeleted = db.delete(PopularMoviesContract.FavoriteEntry.TABLE_NAME, selection, selectionArgs);
+                break;
+            }
+            case REV: {
+                rowsDeleted = db.delete(PopularMoviesContract.TrailersAndReviewsEntry.TABLE_NAME, selection, selectionArgs);
                 break;
             }
             default: {
@@ -200,6 +220,7 @@ public class PopularMoviesProvider extends ContentProvider {
         matcher.addURI(autority, PopularMoviesContract.PATH_MOST_POPULAR, POPULAR);
         matcher.addURI(autority, PopularMoviesContract.PATH_HIGH_RATE, RATE );
         matcher.addURI(autority, PopularMoviesContract.PATH_FAVORITE, FAV );
+        matcher.addURI(autority, PopularMoviesContract.PATH_TRAILERSANDREVIEWS, REV );
 
         // 3) Return the new matcher!
         return matcher;

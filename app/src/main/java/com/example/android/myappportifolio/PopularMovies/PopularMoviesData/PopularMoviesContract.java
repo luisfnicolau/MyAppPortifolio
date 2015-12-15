@@ -91,7 +91,7 @@ public class PopularMoviesContract {
         public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_TRAILERSANDREVIEWS;
         public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_TRAILERSANDREVIEWS;
 
-        public static Uri buildPopularUri(long id) {
+        public static Uri buildTrailerAdnReviewsUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
 
