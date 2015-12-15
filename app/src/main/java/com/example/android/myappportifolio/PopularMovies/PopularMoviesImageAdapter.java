@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.example.android.myappportifolio.R;
@@ -87,7 +88,19 @@ public class PopularMoviesImageAdapter extends BaseAdapter {
             }
 
             imageView.setImageBitmap(images[position]);
-            imageView.setAdjustViewBounds(true);
+            if (images[position] == null) {
+                int j = 0;
+                for (int i = 0; i < images.length; i++) {
+                    if (images[i] != null) {
+                        j = i;
+                        break;
+                    }
+                }
+                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(images[j].getHeight(), context)));
+                imageView.setImageDrawable(context.getDrawable(R.drawable.ic_cancel_black_24dp));
+            } else {
+                imageView.setAdjustViewBounds(true);
+            }
 //            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 //            boolean isTablet = context.getResources().getBoolean(R.bool.isTablet);
 //            if (isTablet && context.getResources().getConfiguration().orientation == context.getResources().getConfiguration().ORIENTATION_PORTRAIT) {

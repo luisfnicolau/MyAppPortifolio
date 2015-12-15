@@ -1,9 +1,11 @@
 package com.example.android.myappportifolio.PopularMovies;
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -11,7 +13,7 @@ import com.example.android.myappportifolio.R;
 
 import java.util.ArrayList;
 
-public class PopularMoviesMain extends Activity implements PopularMoviesMainFragment.Callback {
+public class PopularMoviesMain extends AppCompatActivity implements PopularMoviesMainFragment.Callback {
 
     public static boolean mTwoPane;
     private final String DETAILFRAGMENT_TAG = "DFTAG";
@@ -20,6 +22,11 @@ public class PopularMoviesMain extends Activity implements PopularMoviesMainFrag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popular_movies_main);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         if (findViewById(R.id.movie_detail_container) != null) {
             mTwoPane = true;
 

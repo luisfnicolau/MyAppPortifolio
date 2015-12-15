@@ -25,18 +25,18 @@
         <activity
             android:name=".PopularMovies.PopularMoviesMain"
             android:label="@string/title_activity_popular_movies_main"
+            android:theme="@style/PopularMoviesAppTheme"
             android:parentActivityName=".StartActivity"></activity>
         <!-- I choose to set Detail Activity withou a action bar. It looks more cleaner to me -->
         <activity
             android:name=".PopularMovies.PopularMoviesDetailActivity"
             android:label="@string/title_activity_popular_movies_main"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"></activity>
-        <activity
-            android:name=".PopularMovies.PopularMoviesSettingsActivity"
-            android:label="@string/action_settings"></activity>
+            android:theme="@style/PopularMoviesAppTheme"
+            android:parentActivityName=".PopularMovies.PopularMoviesMain"></activity>
         <activity
             android:name=".PopularMovies.PopularMoviesReviewsListPage"
-            android:label="@string/title_activity_popular_movies_reviews_list_page"></activity>
+            android:label="@string/title_activity_popular_movies_reviews_list_page"
+            android:theme="@style/PopularMoviesAppTheme"></activity>
 
         <provider
             android:name=".PopularMovies.PopularMoviesData.PopularMoviesProvider"

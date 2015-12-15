@@ -1,9 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:colorPrimary">@color/udacityOrange</item>
     </style>
+
+    <style name="PopularMoviesAppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/PopularMoviesColorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/PopularMoviesColorPrimaryDark</item>
+        <item name="android:colorAccent">@color/PopularMoviesColorAccent</item>
+        <item name="android:toolbarStyle">@style/PopularMoviesToolbar</item>
+    </style>
+
+    <style name="PopularMoviesToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:popupTheme">@style/Theme.AppCompat.Light</item>
+    </style>
+
+
+    <style name="PopularMoviesActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/PopularMoviesColorPrimary</item>
+        <item name="android:logo">@drawable/ic_local_movies</item>
+    </style>
+
 
     <style name="startButtonPortraitStyle">
         <item name="android:background">@color/udacityOrange</item>

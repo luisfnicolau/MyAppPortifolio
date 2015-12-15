@@ -4,4 +4,8 @@
     <color name="blue50">#E3F2FD</color>
     <color name="teal500">#009688</color>
     <color name="teal100">#B2DFDB</color>
+    <color name="PopularMoviesColorPrimaryLight">#FFCDD2</color>
+    <color name="PopularMoviesColorPrimary">#F44336</color>
+    <color name="PopularMoviesColorPrimaryDark">#D32F2F</color>
+    <color name="PopularMoviesColorAccent">#2196F3</color>
 </resources>

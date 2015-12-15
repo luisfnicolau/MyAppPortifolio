@@ -17,6 +17,7 @@ public class PopularMoviesContract {
     public static final String PATH_MOST_POPULAR = "popular";
     public static final String PATH_HIGH_RATE = "rate";
     public static final String PATH_FAVORITE = "fav";
+    public static final String PATH_TRAILERSANDREVIEWS = "trailersandreviews";
 
 
     public static final class PopularEntry implements BaseColumns {
@@ -81,6 +82,24 @@ public class PopularMoviesContract {
         public static final String COLUMN_RELEASE_DATE = "release_date";
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_POSTER = "poster";
+
+    }
+
+    public static final class TrailersAndReviewsEntry implements BaseColumns {
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_TRAILERSANDREVIEWS).build();
+
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_TRAILERSANDREVIEWS;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_TRAILERSANDREVIEWS;
+
+        public static Uri buildPopularUri(long id) {
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
+
+        public static final String TABLE_NAME = "trailer";
+
+        public static final String COLUMN_LOC_KEY = "movie_id";
+        public static final String COLUMN_TRAILERS = "trailers";
+        public static final String COLUMN_REVIEWS = "reviews";
 
     }
 }

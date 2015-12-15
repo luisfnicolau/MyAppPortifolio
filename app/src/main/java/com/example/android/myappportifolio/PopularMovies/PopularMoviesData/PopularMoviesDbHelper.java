@@ -28,7 +28,7 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
                 PopularMoviesContract.PopularEntry.COLUMN_OVERVIEW + " TEXT, " +
                 PopularMoviesContract.PopularEntry.COLUMN_VOTE_AVERAGE + " TEXT, " +
                 PopularMoviesContract.PopularEntry.COLUMN_RELEASE_DATE + " TEXT," +
-                PopularMoviesContract.PopularEntry.COLUMN_ID + " TEXT," +
+                PopularMoviesContract.PopularEntry.COLUMN_ID + " TEXT UNIQUE NOT NULL," +
                 PopularMoviesContract.PopularEntry.COLUMN_POSTER + " TEXT" +
                 " );";
 
@@ -39,7 +39,7 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
                 PopularMoviesContract.RateEntry.COLUMN_OVERVIEW + " TEXT, " +
                 PopularMoviesContract.RateEntry.COLUMN_VOTE_AVERAGE + " TEXT, " +
                 PopularMoviesContract.RateEntry.COLUMN_RELEASE_DATE + " TEXT," +
-                PopularMoviesContract.RateEntry.COLUMN_ID + " TEXT," +
+                PopularMoviesContract.RateEntry.COLUMN_ID + " TEXT UNIQUE NOT NULL," +
                 PopularMoviesContract.RateEntry.COLUMN_POSTER + " TEXT" +
                 " );";
 
@@ -50,9 +50,18 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
                 PopularMoviesContract.FavoriteEntry.COLUMN_OVERVIEW + " TEXT, " +
                 PopularMoviesContract.FavoriteEntry.COLUMN_VOTE_AVERAGE + " TEXT, " +
                 PopularMoviesContract.FavoriteEntry.COLUMN_RELEASE_DATE + " TEXT," +
-                PopularMoviesContract.FavoriteEntry.COLUMN_ID + " TEXT," +
+                PopularMoviesContract.FavoriteEntry.COLUMN_ID + " TEXT UNIQUE NOT NULL," +
                 PopularMoviesContract.FavoriteEntry.COLUMN_POSTER + " TEXT" +
                 " );";
+
+        final String SQL_CREATE_TRAILERS_TABLE = "CREATE TABLE " + PopularMoviesContract.TrailersAndReviewsEntry.TABLE_NAME  + " (" +
+                PopularMoviesContract.TrailersAndReviewsEntry._ID + " INTEGER PRIMARY KEY," +
+                PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_TRAILERS + " TEXT," +
+                PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_LOC_KEY + " TEXT," +
+                PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_REVIEWS + " TEXT, " +
+
+        " FOREIGN KEY (" + PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_LOC_KEY + ") REFERENCES " +
+                PopularMoviesContract.PopularEntry.TABLE_NAME + " (" + PopularMoviesContract.PopularEntry._ID + ");";
 
 
 

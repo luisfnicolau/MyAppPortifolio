@@ -1,8 +1,6 @@
 package com.example.android.myappportifolio.PopularMovies;
 
-import android.accounts.Account;
 import android.app.Fragment;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -55,8 +53,8 @@ public class PopularMoviesMainFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ContentResolver mResolver = getActivity().getApplicationContext().getContentResolver();
-        mResolver.addPeriodicSync(new Account("a", "b"), "autorithy", Bundle.EMPTY, 2L);
+//        ContentResolver mResolver = getActivity().getApplicationContext().getContentResolver();
+//        mResolver.addPeriodicSync(new Account("a", "b"), "autorithy", Bundle.EMPTY, 2L);
 
         final View rootView = inflater.inflate(R.layout.fragment_popular_movies_main, container, false);
 

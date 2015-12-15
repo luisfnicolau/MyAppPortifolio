@@ -2,22 +2,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <fragment
-        android:id="@+id/fragment_main"
-        android:layout_width="0dp"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/PopularMoviesColorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_local_movies"
+            android:paddingRight="6dp"
+            android:scaleType="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/title_activity_popular_movies_main"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"/>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:name="com.example.android.myappportifolio.PopularMovies.PopularMoviesMainFragment"
-        tools:layout="@layout/fragment_popular_movies_main" />
+        android:orientation="horizontal">
 
-    <FrameLayout
-        android:id="@+id/movie_detail_container"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"></FrameLayout>
+        <fragment
+            android:id="@+id/fragment_main"
+            android:name="com.example.android.myappportifolio.PopularMovies.PopularMoviesMainFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:layout="@layout/fragment_popular_movies_main" />
 
+        <FrameLayout
+            android:id="@+id/movie_detail_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"></FrameLayout>
+
+    </LinearLayout>
 </LinearLayout>
 
 
