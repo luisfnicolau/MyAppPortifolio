@@ -11,11 +11,13 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.example.android.myappportifolio.PopularMovies.PopularMoviesData.PopularMoviesContract;
+import com.example.android.myappportifolio.PopularMovies.PopularMoviesDetailActivityFragment;
 import com.example.android.myappportifolio.PopularMovies.PopularMoviesUtility;
 import com.example.android.myappportifolio.R;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Luis on 12/21/2015.
@@ -68,32 +70,32 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                         }
                     } while (data.moveToNext());
                 }
-//                data.close();
-//                data = getContentResolver().query(PopularMoviesContract.PopularEntry.CONTENT_URI,
-//                        null,
-//                        null,
-//                        null,
-//                        null);
-//                if (data.moveToFirst()) {
-//                    ArrayList<Integer> columnsIndex = new ArrayList<>();
-//                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_TITLE));
-//                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_POSTER_PATH));
-//                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_OVERVIEW));
-//                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_VOTE_AVERAGE));
-//                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_RELEASE_DATE));
-//                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_ID));
-//                    int i = 0;
-//                    do {
-//                        if (i < 20) {
-//                            movieInfo[i][0] = data.getString(columnsIndex.get(0));
-//                            movieInfo[i][1] = data.getString(columnsIndex.get(1));
-//                            movieInfo[i][2] = data.getString(columnsIndex.get(2));
-//                            movieInfo[i][3] = data.getString(columnsIndex.get(3));
-//                            movieInfo[i][4] = data.getString(columnsIndex.get(4));
-//                            movieInfo[i][5] = data.getString(columnsIndex.get(5));
-//                            i++;
-//                        }
-//                    } while (data.moveToNext());                }
+                data.close();
+                data = getContentResolver().query(PopularMoviesContract.PopularEntry.CONTENT_URI,
+                        null,
+                        null,
+                        null,
+                        null);
+                if (data.moveToFirst()) {
+                    ArrayList<Integer> columnsIndex = new ArrayList<>();
+                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_TITLE));
+                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_POSTER_PATH));
+                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_OVERVIEW));
+                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_VOTE_AVERAGE));
+                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_RELEASE_DATE));
+                    columnsIndex.add(data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_ID));
+                    int i = 0;
+                    do {
+                        if (i < 20) {
+                            movieInfo[i][0] = data.getString(columnsIndex.get(0));
+                            movieInfo[i][1] = data.getString(columnsIndex.get(1));
+                            movieInfo[i][2] = data.getString(columnsIndex.get(2));
+                            movieInfo[i][3] = data.getString(columnsIndex.get(3));
+                            movieInfo[i][4] = data.getString(columnsIndex.get(4));
+                            movieInfo[i][5] = data.getString(columnsIndex.get(5));
+                            i++;
+                        }
+                    } while (data.moveToNext());                }
                 Binder.restoreCallingIdentity(identityToken);
             }
 
@@ -145,7 +147,15 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
 //                Uri weatherUri = WeatherContract.WeatherEntry.buildWeatherLocationWithDate(
 //                        locationSetting,
 //                        dateInMillis);
-                fillInIntent.setData(PopularMoviesContract.PopularEntry.CONTENT_URI);
+//                fillInIntent.setData(PopularMoviesContract.PopularEntry.CONTENT_URI);
+                ArrayList<String> moviesInfo = new ArrayList<>();
+                for (int i = 0; i < movieInfo[0].length; i++) {
+                    moviesInfo.add(movieInfo[position][i]);
+                }
+                byte[] byteArray = PopularMoviesUtility.convertImageToBytes(posters[position]);
+                fillInIntent.putStringArrayListExtra(PopularMoviesDetailActivityFragment.MOVIES_LIST_NAME, moviesInfo);
+                fillInIntent.putExtra(PopularMoviesDetailActivityFragment.PREFERENCE_NAME, preference);
+                fillInIntent.putExtra(PopularMoviesDetailActivityFragment.BYTE_ARRAY_NAME, byteArray);
                 views.setOnClickFillInIntent(R.id.widget_grid_item, fillInIntent);
                 return views;
             }

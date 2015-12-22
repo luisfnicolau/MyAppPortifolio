@@ -47,7 +47,8 @@ public class PopularMoviesMainFragment extends Fragment {
 
     public interface Callback {
 
-        public void onItemSelected(ArrayList<String> moviesInfo, String preference, byte[] byteArray, View view);
+        //        public void onItemSelected(ArrayList<String> moviesInfo, String preference, byte[] byteArray, View view);
+        public void onItemSelected(ArrayList<String> movieDetail, String preference, byte[] byteArray, View view);
     }
 
     @Override
@@ -81,7 +82,6 @@ public class PopularMoviesMainFragment extends Fragment {
 //        preference = sharedPref.getString(getString(R.string.pref_movies_key), defaultValue);
 
         preference = PopularMoviesUtility.getPreference(context, getActivity());
-
 
 
         //If user chose Most Popular Movies go in here
@@ -132,10 +132,52 @@ public class PopularMoviesMainFragment extends Fragment {
 
 
         // Move to a detail view when movie poster is clicked
-            popularMoviesGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    if (movies[position][5] != null) {
+        popularMoviesGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Uri uriWith_id;
+//                if (movies[position][5] != null) {
+//                    long _id = 0;
+//                    ContentResolver resolver = getActivity().getContentResolver();
+//                    if (preference.equals("Popular")) {
+//                        Cursor data = resolver.query(PopularMoviesContract.PopularEntry.CONTENT_URI,
+//                                null,
+//                                null,
+//                                null,
+//                                null);
+//                        if (data.moveToFirst()) {
+//                            int columnIndexId = data.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_ID);
+//                            int columnIndex_Id = data.getColumnIndex(PopularMoviesContract.PopularEntry._ID);
+//                            int i = 0;
+//                            do {
+//                                if (i < 20) {
+//                                    if (data.getString(columnIndexId).equals(movies[position][5])) {
+//                                        _id = data.getLong(columnIndex_Id);
+//                                        data.moveToLast();
+//                                    }
+//                                    i++;
+//                                }
+//                            } while (data.moveToNext());
+//                            uriWith_id = PopularMoviesContract.PopularEntry.buildPopularUri(_id);
+//                            data.close();
+//                            Cursor cursor = resolver.query(uriWith_id,
+//                                    null,
+//                                    null,
+//                                    null,
+//                                    null);
+//                            if (data.moveToFirst()) {
+//                                int columnName = data.getColumnIndex(PopularMoviesContract.PopularEntry.TABLE_NAME);
+//
+//                                do {
+//                                    System.out.println(cursor.getString(columnName));
+//                                } while (data.moveToNext());
+//                            }
+//                            if (preference.equals("Rate")) {
+//
+//                            }
+//                            if (preference.equals("Fav")) {
+//
+//                            }
                         ArrayList<String> movieDetail = new ArrayList<String>();
                         byte[] byteArray = null;
                         //the Array "images" is not reloaded after new images was fetch from internet and saved on the device, so I load here, with a boolean to check if is necessary
@@ -153,209 +195,211 @@ public class PopularMoviesMainFragment extends Fragment {
                             images[position].compress(Bitmap.CompressFormat.PNG, 100, stream);
                             byteArray = stream.toByteArray();
                         }
-                        ((Callback) getActivity())
-                                .onItemSelected(movieDetail, preference, byteArray, view);
-                    }
-                }
-            });
+                            ((Callback) getActivity())
+                                    .onItemSelected(movieDetail, preference, byteArray, view);
+//                            ((Callback) getActivity())
+//                                    .onItemSelected(uriWith_id, view);
+                        }
+
+        });
         return rootView;
     }
 
-// Download de data from themoviedb API
-private class downloadMovieData extends AsyncTask<Void, Void, Boolean> {
+    // Download de data from themoviedb API
+    private class downloadMovieData extends AsyncTask<Void, Void, Boolean> {
 
-    private final String API_KEY = "5efacb99e47c9cb39f08ce2dc7138c15";
-    private final String LOG_TAG = downloadMovieData.class.getSimpleName();
-    private final String BASE_URL = "api.themoviedb.org";
-    private final String FIRST_PARAMETER = "3";
-    private final String DISCOVER_PARAMETER = "discover";
-    private final String MOVIE_PARAMETER = "movie";
-    private final String SORT_PARAMETER_IDENTIFIER = "sort_by";
-    private final String APY_KEY_IDENTIFIER = "api_key";
+        private final String API_KEY = "5efacb99e47c9cb39f08ce2dc7138c15";
+        private final String LOG_TAG = downloadMovieData.class.getSimpleName();
+        private final String BASE_URL = "api.themoviedb.org";
+        private final String FIRST_PARAMETER = "3";
+        private final String DISCOVER_PARAMETER = "discover";
+        private final String MOVIE_PARAMETER = "movie";
+        private final String SORT_PARAMETER_IDENTIFIER = "sort_by";
+        private final String APY_KEY_IDENTIFIER = "api_key";
 
-    String searchType;
-
-
-    @Override
-    protected Boolean doInBackground(Void... params) {
-
-        Boolean hasInternet = new Boolean("true");
-
-        //Check preferences to fetch the right data
-        if (preference.equals("Rate")) {
-            searchType = "vote_average.desc";
-        } else {
-            searchType = "popularity.desc";
-        }
-
-        HttpURLConnection urlConnection = null;
-        BufferedReader reader = null;
-
-        String finalIDBMJsonString = null;
-        String movieListJsonString = null;
-
-        //Buold URI
-        try {
-
-            Uri.Builder builder = new Uri.Builder();
-            builder.scheme("https")
-                    .authority(BASE_URL)
-                    .appendPath(FIRST_PARAMETER)
-                    .appendPath(DISCOVER_PARAMETER)
-                    .appendPath(MOVIE_PARAMETER)
-                    .appendQueryParameter(SORT_PARAMETER_IDENTIFIER, searchType)
-                    .appendQueryParameter(APY_KEY_IDENTIFIER, API_KEY);
-            ;
-
-            String myUrl = builder.build().toString();
-            URL movieList = new URL(myUrl);
-
-            Log.v(LOG_TAG, "Built URL: " + myUrl);
-
-            //Create the connection
-            urlConnection = (HttpURLConnection) movieList.openConnection();
-            urlConnection.setRequestMethod("GET");
-            urlConnection.connect();
+        String searchType;
 
 
-            //Read the input Stream into a String
-            InputStream inputStream = urlConnection.getInputStream();
-            StringBuffer buffer = new StringBuffer();
-            if (inputStream == null) {
-                //Nothing was get
-                return null;
-            }
-            reader = new BufferedReader(new InputStreamReader(inputStream));
+        @Override
+        protected Boolean doInBackground(Void... params) {
 
-            String line;
-            while ((line = reader.readLine()) != null) {
-                //Reading the Json file and jump a line just for debuging purposes
-                buffer.append(line + "\n");
+            Boolean hasInternet = new Boolean("true");
+
+            //Check preferences to fetch the right data
+            if (preference.equals("Rate")) {
+                searchType = "vote_average.desc";
+            } else {
+                searchType = "popularity.desc";
             }
 
-            if (buffer.length() == 0) {
-                return null;
-            }
+            HttpURLConnection urlConnection = null;
+            BufferedReader reader = null;
 
-            movieListJsonString = buffer.toString();
-            //Get the info from Json file
+            String finalIDBMJsonString = null;
+            String movieListJsonString = null;
+
+            //Buold URI
             try {
-                movies = getInfoFromJson(movieListJsonString);
-            } catch (JSONException j) {
-                Log.e(LOG_TAG, "Coudld not fetch data from Json File");
-            }
 
-            Log.v(LOG_TAG, "Movie List Json: " + movieListJsonString);
+                Uri.Builder builder = new Uri.Builder();
+                builder.scheme("https")
+                        .authority(BASE_URL)
+                        .appendPath(FIRST_PARAMETER)
+                        .appendPath(DISCOVER_PARAMETER)
+                        .appendPath(MOVIE_PARAMETER)
+                        .appendQueryParameter(SORT_PARAMETER_IDENTIFIER, searchType)
+                        .appendQueryParameter(APY_KEY_IDENTIFIER, API_KEY);
+                ;
 
-            //Build the path to movie poster
-            builder = new Uri.Builder();
-            builder.scheme("http")
-                    .authority("image.tmdb.org")
-                    .appendPath("t")
-                    .appendPath("p")
-                    .appendPath("w185");
+                String myUrl = builder.build().toString();
+                URL movieList = new URL(myUrl);
 
-            myUrl = builder.build().toString();
+                Log.v(LOG_TAG, "Built URL: " + myUrl);
 
-            //Add the fetched information on an array
-            for (int i = 0; i < movies.length; i++) {
-                if (!movies[i][1].equals("null")) {
-                    movies[i][1] = myUrl + movies[i][1];
+                //Create the connection
+                urlConnection = (HttpURLConnection) movieList.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.connect();
+
+
+                //Read the input Stream into a String
+                InputStream inputStream = urlConnection.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+                if (inputStream == null) {
+                    //Nothing was get
+                    return null;
                 }
-            }
-            Log.v(LOG_TAG, movies[0][1]);
-        } catch (IOException e) {
-            Log.v(LOG_TAG, "Error on getting artist Id Json", e);
-            hasInternet = new Boolean("false");
-        } finally {
-            //Close connection and BufferedReader
-            if (urlConnection != null) {
-                urlConnection.disconnect();
-            }
-            if (reader != null) {
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    //Reading the Json file and jump a line just for debuging purposes
+                    buffer.append(line + "\n");
+                }
+
+                if (buffer.length() == 0) {
+                    return null;
+                }
+
+                movieListJsonString = buffer.toString();
+                //Get the info from Json file
                 try {
-                    reader.close();
-                } catch (final IOException e) {
-                    Log.e(LOG_TAG, "Error closing Stream", e);
+                    movies = getInfoFromJson(movieListJsonString);
+                } catch (JSONException j) {
+                    Log.e(LOG_TAG, "Coudld not fetch data from Json File");
                 }
-            }
-        }
-        return hasInternet;
 
-    }
+                Log.v(LOG_TAG, "Movie List Json: " + movieListJsonString);
 
-    //Set the adapter to the GridView
-    @Override
-    protected void onPostExecute(Boolean hasInternet) {
-        super.onPostExecute(hasInternet);
-        Bitmap[] images = PopularMoviesUtility.loadImages(context, preference);
-        boolean hasNet = hasInternet.booleanValue();
-        boolean hasNewInfo = false;
-        boolean imageNull = false;
-        ArrayList<String> oldInfo = new ArrayList<>();
-        String[][] movieInfo = PopularMoviesUtility.loadInfo(context, preference);
-        for (int i = 0; i < movies.length; i++) {
-            if (hasNet && (!movies[i][5].equals(movieInfo[i][5]))) {
-                hasNewInfo = true;
-            }
-        }
-        for (int i = 0; i < images.length; i++) {
-            if (hasNet && (images == null)) {
-                hasNewInfo = true;
-            }
-        }
-        if (hasNewInfo) {
-            //Check here what the diferences between the new info fetched and the info saved and update only the diferences without needing to download more images than the necessary
-            if (images != null && movieInfo != null) {
-                boolean checker = false;
+                //Build the path to movie poster
+                builder = new Uri.Builder();
+                builder.scheme("http")
+                        .authority("image.tmdb.org")
+                        .appendPath("t")
+                        .appendPath("p")
+                        .appendPath("w185");
+
+                myUrl = builder.build().toString();
+
+                //Add the fetched information on an array
                 for (int i = 0; i < movies.length; i++) {
-                    checker = false;
-                    for (int j = i; j < movieInfo.length; j++) {
-                        if (movies[i][5].equals(movieInfo[j][5])) {
-                            Bitmap holder = images[j];
-                            Bitmap holder2 = images[i];
-                            images[j] = holder2;
-                            images[i] = holder;
-                            checker = true;
-                        }
-                    }
-                    if (checker == false) {
-                        images[i] = null;
-
+                    if (!movies[i][1].equals("null")) {
+                        movies[i][1] = myUrl + movies[i][1];
                     }
                 }
-
-                //Get the info that is not usefull anymore to erase from the device
-                for (int i = 0; i < movieInfo.length; i++) {
-                    for (int j = 0; j < movies.length; j++) {
-                        checker = false;
-                        if (movies[j][5].equals(movieInfo[i][5])) {
-                            checker = true;
-                        }
-                    }
-                    if (checker == false) {
-                        oldInfo.add(movieInfo[i][5]);
+                Log.v(LOG_TAG, movies[0][1]);
+            } catch (IOException e) {
+                Log.v(LOG_TAG, "Error on getting artist Id Json", e);
+                hasInternet = new Boolean("false");
+            } finally {
+                //Close connection and BufferedReader
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (final IOException e) {
+                        Log.e(LOG_TAG, "Error closing Stream", e);
                     }
                 }
             }
-            PopularMoviesImageAdapter imageAdapter = new PopularMoviesImageAdapter(context, movies, images, hasNet);
-            popularMoviesGrid.setAdapter(imageAdapter);
-            PopularMoviesUtility.DownloadImage(movies, context, preference);
-            PopularMoviesUtility.DeleteOldInfo(context, oldInfo, preference);
-            needReloadImages = true;
+            return hasInternet;
+
         }
 
-        if (movies != null && hasNewInfo) {
-
+        //Set the adapter to the GridView
+        @Override
+        protected void onPostExecute(Boolean hasInternet) {
+            super.onPostExecute(hasInternet);
+            Bitmap[] images = PopularMoviesUtility.loadImages(context, preference);
+            boolean hasNet = hasInternet.booleanValue();
+            boolean hasNewInfo = false;
+            boolean imageNull = false;
+            ArrayList<String> oldInfo = new ArrayList<>();
+            String[][] movieInfo = PopularMoviesUtility.loadInfo(context, preference);
             for (int i = 0; i < movies.length; i++) {
+                if (hasNet && (!movies[i][5].equals(movieInfo[i][5]))) {
+                    hasNewInfo = true;
+                }
             }
-            PopularMoviesUtility.saveInfo(context, movies, preference);
+            for (int i = 0; i < images.length; i++) {
+                if (hasNet && (images == null)) {
+                    hasNewInfo = true;
+                }
+            }
+            if (hasNewInfo) {
+                //Check here what the diferences between the new info fetched and the info saved and update only the diferences without needing to download more images than the necessary
+                if (images != null && movieInfo != null) {
+                    boolean checker = false;
+                    for (int i = 0; i < movies.length; i++) {
+                        checker = false;
+                        for (int j = i; j < movieInfo.length; j++) {
+                            if (movies[i][5].equals(movieInfo[j][5])) {
+                                Bitmap holder = images[j];
+                                Bitmap holder2 = images[i];
+                                images[j] = holder2;
+                                images[i] = holder;
+                                checker = true;
+                            }
+                        }
+                        if (checker == false) {
+                            images[i] = null;
 
-        } else if (movies == null) {
-            Toast.makeText(context, "Couldn't connect, please check if you have internet connection", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    //Get the info that is not usefull anymore to erase from the device
+                    for (int i = 0; i < movieInfo.length; i++) {
+                        for (int j = 0; j < movies.length; j++) {
+                            checker = false;
+                            if (movies[j][5].equals(movieInfo[i][5])) {
+                                checker = true;
+                            }
+                        }
+                        if (checker == false) {
+                            oldInfo.add(movieInfo[i][5]);
+                        }
+                    }
+                }
+                PopularMoviesImageAdapter imageAdapter = new PopularMoviesImageAdapter(context, movies, images, hasNet);
+                popularMoviesGrid.setAdapter(imageAdapter);
+                PopularMoviesUtility.DownloadImage(movies, context, preference);
+                PopularMoviesUtility.DeleteOldInfo(context, oldInfo, preference);
+                needReloadImages = true;
+            }
+
+            if (movies != null && hasNewInfo) {
+
+                for (int i = 0; i < movies.length; i++) {
+                }
+                PopularMoviesUtility.saveInfo(context, movies, preference);
+
+            } else if (movies == null) {
+                Toast.makeText(context, "Couldn't connect, please check if you have internet connection", Toast.LENGTH_LONG).show();
+            }
         }
     }
-}
 
     //Get data from Json
     private String[][] getInfoFromJson(String moviesInfoJson) throws JSONException {
