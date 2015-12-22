@@ -11,13 +11,23 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.android.myappportifolio.PopularMovies.PopularMoviesData.PopularMoviesContract;
 import com.example.android.myappportifolio.R;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -98,8 +108,10 @@ public class PopularMoviesUtility {
             if (cursor.moveToFirst()) {
                 columnIndex = cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_POSTER);
                 do {
-                    images[i] = convertBytesToImage(cursor.getBlob(columnIndex));
-                    i++;
+                    if (i < 20) {
+                        images[i] = convertBytesToImage(cursor.getBlob(columnIndex));
+                        i++;
+                    }
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -144,13 +156,15 @@ public class PopularMoviesUtility {
                 columnsIndex.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_RELEASE_DATE));
                 columnsIndex.add(cursor.getColumnIndex(PopularMoviesContract.PopularEntry.COLUMN_ID));
                 do {
-                    moviesInfo[i][0] = cursor.getString(columnsIndex.get(0));
-                    moviesInfo[i][1] = cursor.getString(columnsIndex.get(1));
-                    moviesInfo[i][2] = cursor.getString(columnsIndex.get(2));
-                    moviesInfo[i][3] = cursor.getString(columnsIndex.get(3));
-                    moviesInfo[i][4] = cursor.getString(columnsIndex.get(4));
-                    moviesInfo[i][5] = cursor.getString(columnsIndex.get(5));
-                    i++;
+                    if (i < 20) {
+                        moviesInfo[i][0] = cursor.getString(columnsIndex.get(0));
+                        moviesInfo[i][1] = cursor.getString(columnsIndex.get(1));
+                        moviesInfo[i][2] = cursor.getString(columnsIndex.get(2));
+                        moviesInfo[i][3] = cursor.getString(columnsIndex.get(3));
+                        moviesInfo[i][4] = cursor.getString(columnsIndex.get(4));
+                        moviesInfo[i][5] = cursor.getString(columnsIndex.get(5));
+                        i++;
+                    }
                 } while (cursor.moveToNext());
                 cursor.close();
             }
@@ -427,4 +441,224 @@ public class PopularMoviesUtility {
             return null;
         }
     }
+
+
+        // Download de data from themoviedb API
+        public static class downloadMovieData extends AsyncTask<Context, Void, Boolean> {
+
+            private final String API_KEY = "5efacb99e47c9cb39f08ce2dc7138c15";
+            private final String LOG_TAG = downloadMovieData.class.getSimpleName();
+            private final String BASE_URL = "api.themoviedb.org";
+            private final String FIRST_PARAMETER = "3";
+            private final String DISCOVER_PARAMETER = "discover";
+            private final String MOVIE_PARAMETER = "movie";
+            private final String SORT_PARAMETER_IDENTIFIER = "sort_by";
+            private final String APY_KEY_IDENTIFIER = "api_key";
+
+            String searchType;
+            String[][] movies = new String[20][6];
+            String preference;
+            Context context;
+
+
+            @Override
+            protected Boolean doInBackground(Context... params) {
+
+                context = params[0];
+                Boolean hasInternet = new Boolean("true");
+
+                preference = "Popular";
+
+                //Check preferences to fetch the right data
+                if (preference.equals("Rate")) {
+                    searchType = "vote_average.desc";
+                } else {
+                    searchType = "popularity.desc";
+                }
+
+                HttpURLConnection urlConnection = null;
+                BufferedReader reader = null;
+
+                String finalIDBMJsonString = null;
+                String movieListJsonString = null;
+
+                //Buold URI
+                try {
+
+                    Uri.Builder builder = new Uri.Builder();
+                    builder.scheme("https")
+                            .authority(BASE_URL)
+                            .appendPath(FIRST_PARAMETER)
+                            .appendPath(DISCOVER_PARAMETER)
+                            .appendPath(MOVIE_PARAMETER)
+                            .appendQueryParameter(SORT_PARAMETER_IDENTIFIER, searchType)
+                            .appendQueryParameter(APY_KEY_IDENTIFIER, API_KEY);
+                    ;
+
+                    String myUrl = builder.build().toString();
+                    URL movieList = new URL(myUrl);
+
+                    Log.v(LOG_TAG, "Built URL: " + myUrl);
+
+                    //Create the connection
+                    urlConnection = (HttpURLConnection) movieList.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.connect();
+
+
+                    //Read the input Stream into a String
+                    InputStream inputStream = urlConnection.getInputStream();
+                    StringBuffer buffer = new StringBuffer();
+                    if (inputStream == null) {
+                        //Nothing was get
+                        return null;
+                    }
+                    reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        //Reading the Json file and jump a line just for debuging purposes
+                        buffer.append(line + "\n");
+                    }
+
+                    if (buffer.length() == 0) {
+                        return null;
+                    }
+
+                    movieListJsonString = buffer.toString();
+                    //Get the info from Json file
+                    try {
+                        movies = getInfoFromJson(movieListJsonString);
+                    } catch (JSONException j) {
+                        Log.e(LOG_TAG, "Coudld not fetch data from Json File");
+                    }
+
+                    Log.v(LOG_TAG, "Movie List Json: " + movieListJsonString);
+
+                    //Build the path to movie poster
+                    builder = new Uri.Builder();
+                    builder.scheme("http")
+                            .authority("image.tmdb.org")
+                            .appendPath("t")
+                            .appendPath("p")
+                            .appendPath("w185");
+
+                    myUrl = builder.build().toString();
+
+                    //Add the fetched information on an array
+                    for (int i = 0; i < movies.length; i++) {
+                        if (!movies[i][1].equals("null")) {
+                            movies[i][1] = myUrl + movies[i][1];
+                        }
+                    }
+                    Log.v(LOG_TAG, movies[0][1]);
+                } catch (IOException e) {
+                    Log.v(LOG_TAG, "Error on getting artist Id Json", e);
+                    hasInternet = new Boolean("false");
+                } finally {
+                    //Close connection and BufferedReader
+                    if (urlConnection != null) {
+                        urlConnection.disconnect();
+                    }
+                    if (reader != null) {
+                        try {
+                            reader.close();
+                        } catch (final IOException e) {
+                            Log.e(LOG_TAG, "Error closing Stream", e);
+                        }
+                    }
+                }
+                return hasInternet;
+
+            }
+
+            //Set the adapter to the GridView
+            @Override
+            protected void onPostExecute(Boolean hasInternet) {
+                super.onPostExecute(hasInternet);
+                Bitmap[] images = PopularMoviesUtility.loadImages(context, preference);
+                boolean hasNet = hasInternet.booleanValue();
+                boolean hasNewInfo = false;
+                boolean imageNull = false;
+                ArrayList<String> oldInfo = new ArrayList<>();
+                String[][] movieInfo = PopularMoviesUtility.loadInfo(context, preference);
+                for (int i = 0; i < movies.length; i++) {
+                    if (hasNet && (!movies[i][5].equals(movieInfo[i][5]))) {
+                        hasNewInfo = true;
+                    }
+                }
+                for (int i = 0; i < images.length; i++) {
+                    if (hasNet && (images == null)) {
+                        hasNewInfo = true;
+                    }
+                }
+                if (hasNewInfo) {
+                    //Check here what the diferences between the new info fetched and the info saved and update only the diferences without needing to download more images than the necessary
+                    if (images != null && movieInfo != null) {
+                        boolean checker = false;
+                        for (int i = 0; i < movies.length; i++) {
+                            checker = false;
+                            for (int j = i; j < movieInfo.length; j++) {
+                                if (movies[i][5].equals(movieInfo[j][5])) {
+                                    Bitmap holder = images[j];
+                                    Bitmap holder2 = images[i];
+                                    images[j] = holder2;
+                                    images[i] = holder;
+                                    checker = true;
+                                }
+                            }
+                            if (checker == false) {
+                                images[i] = null;
+
+                            }
+                        }
+
+                        //Get the info that is not usefull anymore to erase from the device
+                        for (int i = 0; i < movieInfo.length; i++) {
+                            for (int j = 0; j < movies.length; j++) {
+                                checker = false;
+                                if (movies[j][5].equals(movieInfo[i][5])) {
+                                    checker = true;
+                                }
+                            }
+                            if (checker == false) {
+                                oldInfo.add(movieInfo[i][5]);
+                            }
+                        }
+                    }
+                    PopularMoviesUtility.DownloadImage(movies, context, preference);
+                    PopularMoviesUtility.DeleteOldInfo(context, oldInfo, preference);
+                }
+
+                if (movies != null && hasNewInfo) {
+
+                    for (int i = 0; i < movies.length; i++) {
+                    }
+                    PopularMoviesUtility.saveInfo(context, movies, preference);
+
+                } else if (movies == null) {
+                    Toast.makeText(context, "Couldn't connect, please check if you have internet connection", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+
+        //Get data from Json
+        private static String[][] getInfoFromJson (String moviesInfoJson)throws JSONException {
+
+            String[][] movies = new String[20][6];
+
+            JSONObject moviesJsonFile = new JSONObject(moviesInfoJson);
+
+            JSONArray moviesJsonArray = moviesJsonFile.getJSONArray("results");
+
+            for (int i = 0; i < 20; i++) {
+                movies[i][0] = moviesJsonArray.getJSONObject(i).getString("original_title");
+                movies[i][1] = moviesJsonArray.getJSONObject(i).getString("poster_path");
+                movies[i][2] = moviesJsonArray.getJSONObject(i).getString("overview");
+                movies[i][3] = moviesJsonArray.getJSONObject(i).getString("vote_average");
+                movies[i][4] = moviesJsonArray.getJSONObject(i).getString("release_date");
+                movies[i][5] = moviesJsonArray.getJSONObject(i).getString("id");
+            }
+            return movies;
+        }
 }

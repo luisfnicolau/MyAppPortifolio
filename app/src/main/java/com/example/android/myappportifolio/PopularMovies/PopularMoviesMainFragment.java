@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,7 +47,7 @@ public class PopularMoviesMainFragment extends Fragment {
 
     public interface Callback {
 
-        public void onItemSelected(ArrayList<String> moviesInfo, String preference, byte[] byteArray);
+        public void onItemSelected(ArrayList<String> moviesInfo, String preference, byte[] byteArray, View view);
     }
 
     @Override
@@ -61,6 +62,10 @@ public class PopularMoviesMainFragment extends Fragment {
         context = getActivity().getApplicationContext();
 
         popularMoviesGrid = (GridView) rootView.findViewById(R.id.popular_movies_grid_view);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            popularMoviesGrid.setNestedScrollingEnabled(true);
+        }
 
         boolean isTablet = getResources().getBoolean(R.bool.isTablet);
         if (isTablet) {
@@ -149,7 +154,7 @@ public class PopularMoviesMainFragment extends Fragment {
                             byteArray = stream.toByteArray();
                         }
                         ((Callback) getActivity())
-                                .onItemSelected(movieDetail, preference, byteArray);
+                                .onItemSelected(movieDetail, preference, byteArray, view);
                     }
                 }
             });
@@ -286,10 +291,16 @@ private class downloadMovieData extends AsyncTask<Void, Void, Boolean> {
         Bitmap[] images = PopularMoviesUtility.loadImages(context, preference);
         boolean hasNet = hasInternet.booleanValue();
         boolean hasNewInfo = false;
+        boolean imageNull = false;
         ArrayList<String> oldInfo = new ArrayList<>();
         String[][] movieInfo = PopularMoviesUtility.loadInfo(context, preference);
         for (int i = 0; i < movies.length; i++) {
             if (hasNet && (!movies[i][5].equals(movieInfo[i][5]))) {
+                hasNewInfo = true;
+            }
+        }
+        for (int i = 0; i < images.length; i++) {
+            if (hasNet && (images == null)) {
                 hasNewInfo = true;
             }
         }

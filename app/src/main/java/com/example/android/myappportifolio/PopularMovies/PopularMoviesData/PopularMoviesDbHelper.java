@@ -22,7 +22,7 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         final String SQL_CREATE_POPULAR_TABLE = "CREATE TABLE " + PopularMoviesContract.PopularEntry.TABLE_NAME  + " (" +
-                PopularMoviesContract.PopularEntry._ID + " INTEGER PRIMARY KEY," +
+                PopularMoviesContract.PopularEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 PopularMoviesContract.PopularEntry.COLUMN_TITLE + " TEXT," +
                 PopularMoviesContract.PopularEntry.COLUMN_POSTER_PATH + " TEXT, " +
                 PopularMoviesContract.PopularEntry.COLUMN_OVERVIEW + " TEXT, " +
@@ -33,7 +33,7 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
                 " );";
 
         final String SQL_CREATE_RATE_TABLE = "CREATE TABLE " + PopularMoviesContract.RateEntry.TABLE_NAME  + " (" +
-                PopularMoviesContract.RateEntry._ID + " INTEGER PRIMARY KEY," +
+                PopularMoviesContract.RateEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 PopularMoviesContract.RateEntry.COLUMN_TITLE + " TEXT," +
                 PopularMoviesContract.RateEntry.COLUMN_POSTER_PATH + " TEXT, " +
                 PopularMoviesContract.RateEntry.COLUMN_OVERVIEW + " TEXT, " +
@@ -44,7 +44,7 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
                 " );";
 
         final String SQL_CREATE_FAVORITE_TABLE = "CREATE TABLE " + PopularMoviesContract.FavoriteEntry.TABLE_NAME  + " (" +
-                PopularMoviesContract.FavoriteEntry._ID + " INTEGER PRIMARY KEY," +
+                PopularMoviesContract.FavoriteEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 PopularMoviesContract.FavoriteEntry.COLUMN_TITLE + " TEXT," +
                 PopularMoviesContract.FavoriteEntry.COLUMN_POSTER_PATH + " TEXT, " +
                 PopularMoviesContract.FavoriteEntry.COLUMN_OVERVIEW + " TEXT, " +
@@ -55,7 +55,7 @@ public class PopularMoviesDbHelper extends SQLiteOpenHelper {
                 " );";
 
         final String SQL_CREATE_TRAILERS_TABLE = "CREATE TABLE " + PopularMoviesContract.TrailersAndReviewsEntry.TABLE_NAME  + " (" +
-                PopularMoviesContract.TrailersAndReviewsEntry._ID + " INTEGER PRIMARY KEY," +
+                PopularMoviesContract.TrailersAndReviewsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_TRAILERS + " TEXT," +
                 PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_LOC_KEY + " TEXT," +
                 PopularMoviesContract.TrailersAndReviewsEntry.COLUMN_REVIEWS + " TEXT " +

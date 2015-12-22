@@ -1,15 +1,18 @@
 package com.example.android.myappportifolio;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.android.myappportifolio.PopularMovies.PopularMoviesMain;
 
-public class StartActivity extends Activity {
+public class StartActivity extends AppCompatActivity {
 
     Context context;
 
@@ -48,7 +51,13 @@ public class StartActivity extends Activity {
         switch (v.getId()){
             case R.id.spotify_streamer_button:
                 Intent intent = new Intent(context, PopularMoviesMain.class);
-                startActivity(intent);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ActivityOptionsCompat options = ActivityOptionsCompat
+                            .makeSceneTransitionAnimation(this, v, getString(R.string.transition_start));
+                    ActivityCompat.startActivity(this, intent, options.toBundle());
+                } else {
+                    startActivity(intent);
+                }
                 break;
             case R.id.score_apps_button:
                 Toast.makeText(context, "This Button will launch my Score App", Toast.LENGTH_SHORT).show();

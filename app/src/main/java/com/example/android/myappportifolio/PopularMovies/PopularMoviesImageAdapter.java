@@ -96,7 +96,9 @@ public class PopularMoviesImageAdapter extends BaseAdapter {
                         break;
                     }
                 }
-                imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(images[j].getHeight(), context)));
+                if (images[j] != null) {
+                    imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, PopularMoviesUtility.convertDipToPixels(images[j].getHeight(), context)));
+                }
                 imageView.setImageDrawable(context.getDrawable(R.drawable.ic_cancel_black_24dp));
             } else {
                 imageView.setAdjustViewBounds(true);

@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -72,6 +73,10 @@ public class PopularMoviesDetailActivityFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_popular_movies_detail, container, false);
 
         context = getActivity().getApplicationContext();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            rootView.findViewById(R.id.detail_scroll_view).setNestedScrollingEnabled(true);
+        }
 
         ImageView poster = (ImageView) rootView.findViewById(R.id.popular_movies_detail_poster);
 

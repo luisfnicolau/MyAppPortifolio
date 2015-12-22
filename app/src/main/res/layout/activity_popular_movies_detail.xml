@@ -4,40 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/PopularMoviesColorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingRight="6dp"
-            android:scaleType="center"
-            android:src="@drawable/ic_local_movies" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="@string/title_activity_popular_movies_main"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/popular_movies_share_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/PopularMoviesColorPrimary"
-            android:drawableEnd="@android:drawable/ic_menu_share"
-            android:onClick="ShareAction"
-            android:paddingRight="16dp"
-            android:scaleType="center" />
-
-    </android.support.v7.widget.Toolbar>
-
     <fragment
         android:id="@+id/movie_detail_container"
         android:name="com.example.android.myappportifolio.PopularMovies.PopularMoviesDetailActivityFragment"

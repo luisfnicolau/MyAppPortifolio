@@ -1,7 +1,10 @@
 package com.example.android.myappportifolio.PopularMovies;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -92,7 +95,13 @@ public class PopularMoviesDetailActivity extends AppCompatActivity {
     public void launchReviews(View view) {
         Intent intent = new Intent(getApplicationContext(), PopularMoviesReviewsListPage.class);
         intent.putExtra("reviewsList", reviews);
-        startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ActivityOptionsCompat options = ActivityOptionsCompat
+                    .makeSceneTransitionAnimation(this, (View) view, getApplicationContext().getString(R.string.transition_start));
+            ActivityCompat.startActivity(this, intent, options.toBundle());
+        } else {
+            startActivity(intent);
+        }
     }
 
     public static void setShareIntent(Intent shareIntent) {

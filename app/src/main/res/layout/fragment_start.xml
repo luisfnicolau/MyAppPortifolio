@@ -19,9 +19,10 @@
 
     <Button
         android:id="@+id/spotify_streamer_button"
+        android:transitionName="@string/transition_start"
         style="@style/startButtonPortraitStyle"
         android:text="Popular Movies"
-        android:onClick="onClick"/>
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/score_apps_button"

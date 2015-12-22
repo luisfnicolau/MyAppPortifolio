@@ -2,18 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jar="C:\Users\Luis\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\classes-dc8fb3c2f04f11f09f3ade30e34e2aa8dd99e7e7.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.0.1\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="39ae02ce40c3ac828abbf780ce0ff5d7a28b7d6a">
-        <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\classes-ea0d00763da8864cb20db32418f816ab1090edb6.jar" />
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-da43d144ef79620d29372ad9aea5d2cc22519a79.jar" />
     </item>
     <item
         jar="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
@@ -23,11 +16,11 @@
         <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-33725cf5e5e3b134ecab3da23b67abf69f0677e7.jar" />
     </item>
     <item
-        jar="C:\Users\Luis\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        jar="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.0.1\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-da43d144ef79620d29372ad9aea5d2cc22519a79.jar" />
+        sha1="39ae02ce40c3ac828abbf780ce0ff5d7a28b7d6a">
+        <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\classes-ea0d00763da8864cb20db32418f816ab1090edb6.jar" />
     </item>
     <item
         jar="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
@@ -35,6 +28,20 @@
         revision="22.0.1"
         sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
         <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\classes-5a1c62e4efbafd529dcb062ea689c9692d70e9e2.jar" />
+    </item>
+    <item
+        jar="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\classes-dc8fb3c2f04f11f09f3ade30e34e2aa8dd99e7e7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\exploded-aar\com.android.support\design\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
+        <dex dex="C:\Users\Luis\Desktop\Prog Projects\AndroidStudio\StudioProjects\MyAppPortifolio\app\build\intermediates\pre-dexed\debug\classes-1fa54287d4887b2a4655ee21d0a2fab80628b3d2.jar" />
     </item>
     <item
         jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"

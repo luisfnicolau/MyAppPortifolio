@@ -11,6 +11,12 @@
     <string name="favorite_popular_movies">Mark as Favorite</string>
     <string name="title_activity_popular_movies_reviews_list_page">Reviews</string>
 
+    <string name="transition_start">TRS</string>
+    <string name="popular_movies_transition_reviews">TRR</string>
+    <string name="title_widget">Popular Movies</string>
+    <string name="title_widget_detail">Popular Movies</string>
+
+
 
     <string name="pref_movies_key">prefMoviesKey</string>
     <string name="pref_movies_default">Popular</string>
